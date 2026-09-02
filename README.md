@@ -1,13 +1,9 @@
-```gfm
-# insert project logo - replace the below logo location with the location of your logo
-![](https://github.com/openmainframeproject/artwork/blob/master/projects/PROJECT NAME/PROJECT NAME-color.svg)
-```
 
-```gfm
-# Add badges that point to your LICENSE, CII status, and build environment (if it exists). Check out other badges to add at https://shields.io/
-![GitHub](https://img.shields.io/github/license/openmainframeproject/PROJECT NAME)
-[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/CII ID/badge)](https://bestpractices.coreinfrastructure.org/projects/CII ID)
-```
+![Mainframe Open Education](https://artwork.openmainframeproject.org/projects/mainframe-open-education/horizontal/color/mainframe-open-education-horizontal-color.svg)
+
+![Github](https://img.shields.io/github/license/openmainframeproject/omp-education)
+![Website](https://img.shields.io/website?down_message=%F0%9F%98%A2&up_message=%F0%9F%98%80&url=https%3A%2F%2Fwww.openmainframeproject.org%2Fprojects%2Fmainframeopeneducation)
+![Gitbook](https://img.shields.io/badge/GitBook-view-blue?link=https://open-mainframe-project.gitbook.io/mainframe-open-education-project/&logo=gitbook)
 
 # PROJECT NAME
 

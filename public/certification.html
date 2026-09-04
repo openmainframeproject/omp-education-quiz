@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MOE Practitioner Badge — MOE</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="/logo/moebook.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    .cert-page {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 20px 24px 60px;
+    }
+    .cert-page h1 {
+      font-family: 'IBM Plex Serif', serif;
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--navy, #0F1F3D);
+    }
+    .cert-page .subtitle {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+    .cert-question {
+      background: #f8fafc;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin-bottom: 20px;
+      transition: border-color 0.15s;
+    }
+    .cert-question.correct { background: #FEF3C7; border-color: #FCD34D; }
+    .cert-question.incorrect { background: #fef2f2; border-color: #fca5a5; }
+    .cert-question .q-prompt {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+    .cert-question .q-options { display: flex; flex-direction: column; gap: 8px; }
+    .cert-question .q-option {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.1s;
+      background: var(--bg);
+      font-size: 15px;
+      line-height: 1.4;
+      position: relative;
+    }
+    .cert-question .q-option::before {
+      content: '';
+      width: 18px; height: 18px;
+      flex-shrink: 0;
+      border: 2px solid var(--text-muted);
+      border-radius: 50%;
+      margin-top: 2px;
+      transition: border-color 0.15s, background 0.15s;
+      background: var(--bg);
+    }
+    .cert-question .q-option:has(input[type="checkbox"])::before { border-radius: 4px; }
+    .cert-question .q-option:has(input:checked)::before {
+      border-color: var(--primary);
+      background: var(--primary);
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3E%3C/svg%3E");
+      background-size: 12px;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    .cert-question .q-option:hover { background: #f1f5f9; border-color: #cbd5e1; }
+    .cert-question .q-option input {
+      position: absolute; opacity: 0; width: 0; height: 0; pointer-events: none;
+    }
+    .cert-question .q-option .opt-text { flex: 1; }
+    .cert-question .q-option.correct-opt { background: #FEF3C7; border-color: #FCD34D; }
+    .cert-question .q-option.correct-opt .opt-text::after { content: ' \2713'; color: var(--success); font-weight: 700; }
+    .cert-question .q-option.incorrect-opt { background: #fef2f2; border-color: #fca5a5; }
+    .cert-question .q-option.incorrect-opt .opt-text::after { content: ' \2717'; color: #dc2626; font-weight: 700; }
+    .cert-actions { margin-top: 28px; display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-primary {
+      padding: 12px 28px; font-size: 16px; font-weight: 600; border: none;
+      border-radius: 8px; cursor: pointer; background: var(--primary);
+      color: #fff; transition: background 0.15s;
+    }
+    .btn-primary:hover { background: #1d4ed8; }
+    .btn-primary:disabled { opacity: .5; cursor: not-allowed; }
+    .btn-secondary {
+      padding: 12px 28px; font-size: 16px; font-weight: 600;
+      border: 1px solid var(--border-color); border-radius: 8px; cursor: pointer;
+      background: var(--bg); color: var(--text); transition: background 0.15s;
+    }
+    .btn-secondary:hover { background: var(--hover-bg); }
+    .cert-result {
+      margin-top: 24px; padding: 20px; border-radius: 10px;
+      text-align: center; display: none;
+    }
+    .cert-result.visible { display: block; }
+    .cert-result.pass { background: #FEF3C7; border: 2px solid #FCD34D; }
+    .cert-result.fail { background: #fef2f2; border: 2px solid #fca5a5; }
+    .cert-result .result-score { font-size: 28px; font-weight: 700; margin-bottom: 4px; }
+    .cert-result .result-label { font-size: 16px; color: var(--text-muted); margin-bottom: 16px; }
+    .cert-result .result-pass { color: var(--success); }
+    .cert-result .result-fail { color: #dc2626; }
+    .cert-result .result-note {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text);
+      max-width: 520px;
+      margin: 0 auto 16px;
+    }
+    .dark .cert-question { background: #1e1e20; }
+    .dark .cert-question.correct { background: #3A2E08; border-color: #A16A0A; }
+    .dark .cert-question.incorrect { background: #3b1a1a; border-color: #7f1d1d; }
+    .dark .cert-question .q-option.correct-opt { background: #3A2E08; border-color: #A16A0A; }
+    .dark .cert-question .q-option.incorrect-opt { background: #3b1a1a; border-color: #7f1d1d; }
+    .dark .cert-result.pass { background: #3A2E08; border-color: #A16A0A; }
+    .dark .cert-result.fail { background: #3b1a1a; border-color: #7f1d1d; }
+    .dark .cert-question .q-option:hover { background: #2a2a2d; }
+    .dark { --navy: #60a5fa; }
+
+    .blocker {
+      text-align: center;
+      padding: 60px 24px;
+    }
+    .blocker h2 { font-family: 'IBM Plex Serif', serif; font-size: 28px; color: var(--navy, #0F1F3D); margin-bottom: 12px; }
+    .blocker p { font-size: 16px; color: var(--text-muted); max-width: 500px; margin: 0 auto 24px; line-height: 1.6; }
+    .blocker .progress-ring {
+      width: 120px; height: 120px; border-radius: 50%;
+      border: 6px solid var(--hairline);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; font-weight: 700; color: var(--navy, #0F1F3D);
+      font-family: 'IBM Plex Mono', monospace;
+      margin: 0 auto 20px;
+      position: relative;
+    }
+    .blocker .progress-ring .fill {
+      position: absolute; inset: -6px;
+      border-radius: 50%;
+      border: 6px solid var(--primary);
+      clip-path: polygon(50% 50%, 50% 0, 100% 0, 100% 100%, 0 100%, 0 0, 50% 0);
+      opacity: .3;
+    }
+    .blocker .btn-back {
+      display: inline-block;
+      padding: 12px 28px;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+    }
+    .blocker .missed-list {
+      margin: 24px auto 0;
+      max-width: 520px;
+      text-align: left;
+    }
+    .blocker .missed-list h3 {
+      font-family: 'IBM Plex Serif', serif;
+      font-size: 16px;
+      color: var(--navy, #0F1F3D);
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    .blocker .missed-list a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 14px;
+      color: var(--text);
+      transition: background .1s;
+      border-bottom: 1px solid var(--hairline);
+    }
+    .blocker .missed-list a:hover {
+      background: #f1f5f9;
+    }
+    .blocker .missed-list a::before {
+      content: '\2197';
+      color: var(--primary);
+      font-size: 12px;
+    }
+
+    /* Credly Badge Claim Styles */
+    .badge-claim-card {
+      margin: 20px auto 0;
+      max-width: 540px;
+      padding: 24px;
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    }
+    .dark .badge-claim-card {
+      background: #18181b;
+      border-color: #27272a;
+    }
+    .badge-claim-card h3 {
+      font-family: 'IBM Plex Serif', serif;
+      font-size: 20px;
+      margin-bottom: 8px;
+      color: var(--navy);
+    }
+    .badge-claim-form {
+      margin-top: 16px;
+      text-align: left;
+    }
+    .name-fields-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    @media (max-width: 500px) {
+      .name-fields-row { grid-template-columns: 1fr; }
+    }
+    .name-fields-row label {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+    }
+    .name-fields-row input {
+      padding: 10px 12px;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .name-fields-row input:focus {
+      border-color: var(--primary);
+    }
+    .claim-recipient-note {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      padding: 8px 12px;
+      background: var(--hairline);
+      border-radius: 6px;
+      text-align: left;
+    }
+    .claim-error {
+      color: #dc2626;
+      font-size: 13px;
+      margin-bottom: 12px;
+      font-weight: 500;
+      text-align: left;
+    }
+    .btn-credly {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #FF6B00;
+      color: #ffffff !important;
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 16px;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(255, 107, 0, 0.25);
+      transition: background 0.15s, transform 0.1s;
+    }
+    .btn-credly:hover {
+      background: #E05E00;
+      transform: translateY(-1px);
+    }
+    .badge-success-box {
+      margin: 20px auto 0;
+      max-width: 540px;
+      padding: 28px 24px;
+      background: #ECFDF5;
+      border: 1px solid #6EE7B7;
+      border-radius: 12px;
+      text-align: center;
+    }
+    .dark .badge-success-box {
+      background: #064e3b;
+      border-color: #059669;
+    }
+    .badge-success-box h3 {
+      font-family: 'IBM Plex Serif', serif;
+      color: #065F46;
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+    .dark .badge-success-box h3 {
+      color: #A7F3D0;
+    }
+    .badge-success-box p {
+      color: #047857;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .dark .badge-success-box p {
+      color: #D1FAE5;
+    }
+  </style>
+</head>
+<body>
+<header id="top-header">
+  <div class="header-left">
+    <a class="header-logo" href="/"><img src="/logo/moebook.png" alt="MOE" class="header-logo-emblem"><span class="header-title">MOE Documentation</span></a>
+  </div>
+  <div class="header-center"></div>
+  <div class="header-right">
+    <button id="dark-toggle" class="header-btn dark-toggle" title="Toggle dark mode">&#9790;</button>
+    <div id="auth-container" class="auth-container"></div>
+  </div>
+</header>
+
+<div id="app" style="min-height:calc(100vh - var(--header-height))">
+  <div id="content-area" style="max-width:100%;margin:0 auto;padding:20px 24px">
+    <div class="cert-page" id="cert-page">
+      <div class="cert-logo-wrap">
+        <img src="/logo/moe-logo-black.png" alt="Mainframe Open Education" class="cert-logo-img">
+      </div>
+      <h1>Mainframe Open Education</h1>
+      <div class="subtitle">MOE Practitioner Badge Examination</div>
+
+      <div id="quiz-check-area"></div>
+      <div id="exam-area" style="display:none">
+        <div class="pass-info" style="background:#FEF3C7;border:1px solid #FCD34D;border-radius:10px;padding:14px 20px;font-size:14px;margin-bottom:24px;display:flex;align-items:center;gap:10px">
+          &#9432; You need at least <strong>80% (16/20)</strong> correct answers to earn your badge.
+        </div>
+        <form id="cert-form" autocomplete="off">
+          <div id="questions-container"></div>
+          <div class="cert-actions">
+            <button type="button" class="btn-primary" id="cert-submit">Submit Answers</button>
+            <button type="button" class="btn-secondary" id="cert-retake" style="display:none">Retake Exam</button>
+          </div>
+        </form>
+        <div id="cert-result" class="cert-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Auth modal (login / register) -->
+<div id="auth-modal" class="auth-modal" data-moe-tab="login">
+  <div class="auth-modal-box">
+    <button type="button" class="auth-close" aria-label="Close">&times;</button>
+    <div class="auth-tabs">
+      <button type="button" class="auth-tab active" data-auth-tab="login">Log In</button>
+      <button type="button" class="auth-tab" data-auth-tab="register">Sign Up</button>
+    </div>
+    <div class="auth-panel active" data-auth-panel="login">
+      <h3>Welcome back</h3>
+      <p class="auth-sub">Log in to keep your progress synced across devices.</p>
+      <form>
+        <label>Email<input type="email" name="email" autocomplete="email" placeholder="you@example.com" required></label>
+        <label>Password<input type="password" name="password" autocomplete="current-password" placeholder="Your password" required></label>
+        <p class="auth-error"></p>
+        <button type="submit" class="auth-submit">Log In</button>
+      </form>
+    </div>
+    <div class="auth-panel" data-auth-panel="register">
+      <h3>Create your account</h3>
+      <p class="auth-sub">Your quiz progress will follow your account on any device.</p>
+      <form>
+        <label>Email<input type="email" name="email" autocomplete="email" placeholder="you@example.com" required></label>
+        <label>Password<input type="password" name="password" autocomplete="new-password" placeholder="At least 6 characters" required minlength="6"></label>
+        <p class="auth-error"></p>
+        <button type="submit" class="auth-submit">Create Account</button>
+      </form>
+    </div>
+    <p class="auth-note">Not logged in? Your progress is saved on this device only.</p>
+  </div>
+</div>
+
+<script src="js/auth.js"></script>
+<script>
+const COMPLETED_KEY = 'moe_completed_quizzes';
+const EXAM_QUESTION_COUNT = 20;
+const PASS_SCORE = 80;                  // percent required to earn the badge
+const REQUIRED_PROGRESS_PCT = 80;       // percent of quizzes that must be complete
+
+function getCompletedQuizzes() {
+  try {
+    return JSON.parse(localStorage.getItem(COMPLETED_KEY) || '[]');
+  } catch { return []; }
+}
+
+function shuffle(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+function escapeHtml(t) {
+  const d = document.createElement('div');
+  d.textContent = t;
+  return d.innerHTML;
+}
+
+let allQuizUrls = [];
+let allQuestions = [];
+let currentQuestions = [];
+let quizzesData = null;
+let urlToTitle = {};
+
+async function loadQuizzes() {
+  try {
+    const res = await fetch('/quizzes.json');
+    if (res.ok) {
+      quizzesData = await res.json();
+      allQuizUrls = Object.keys(quizzesData);
+      for (const url of allQuizUrls) {
+        if (quizzesData[url] && quizzesData[url].questions) {
+          for (const q of quizzesData[url].questions) {
+            allQuestions.push({ ...q, sourceUrl: url });
+          }
+        }
+      }
+    }
+  } catch (e) {
+    console.error('Failed to load quizzes:', e);
+  }
+}
+
+async function loadSitemap() {
+  try {
+    const res = await fetch('/api/sitemap');
+    if (res.ok) {
+      const data = await res.json();
+      const tree = (data && Array.isArray(data.tree)) ? data.tree : (Array.isArray(data) ? data : []);
+      flattenSitemap(tree);
+    }
+  } catch (e) {
+    console.error('Failed to load sitemap:', e);
+  }
+}
+
+function flattenSitemap(nodes) {
+  for (const node of nodes) {
+    if (node.url) urlToTitle[node.url] = node.title;
+    if (node.children) flattenSitemap(node.children);
+  }
+}
+
+function getPageTitle(url) {
+  return urlToTitle[url] || url.split('/').pop().replace(/\.md$/, '').replace(/-/g, ' ');
+}
+
+function pickRandomQuestions(count) {
+  const shuffled = shuffle([...allQuestions]);
+  return shuffled.slice(0, count);
+}
+
+async function init() {
+  await Promise.all([loadQuizzes(), loadSitemap()]);
+
+  /* Account system: if logged in, pull server progress into local storage
+     so a logged-in user's completions gate the exam correctly. */
+  if (window.MOE_AUTH) {
+    try { await MOE_AUTH.init(); } catch (e) {}
+    MOE_AUTH.renderAccountButton('auth-container');
+    await MOE_AUTH.mergeProgress();
+  }
+
+  const completed = getCompletedQuizzes();
+
+  if (!quizzesData || allQuizUrls.length === 0) {
+    document.getElementById('quiz-check-area').innerHTML = `
+      <div class="blocker">
+        <h2>Unable to Load Quiz Data</h2>
+        <p>Failed to load quiz data. Please ensure the server is running and try again.</p>
+        <a href="/" class="btn-back">&#8592; Go Home</a>
+      </div>
+    `;
+    return;
+  }
+
+  const pct = Math.round((completed.length / allQuizUrls.length) * 100);
+
+  if (pct < REQUIRED_PROGRESS_PCT) {
+    const missed = allQuizUrls.filter(url => !completed.includes(url));
+    showBlocker(completed.length, allQuizUrls.length, pct, missed);
+    return;
+  }
+
+  showExamReady();
+}
+
+function showBlocker(completedCount, totalCount, pct, missedUrls) {
+  const area = document.getElementById('quiz-check-area');
+  const required = Math.ceil((REQUIRED_PROGRESS_PCT / 100) * totalCount);
+  const listHtml = missedUrls && missedUrls.length > 0 ? `
+    <div class="missed-list">
+      <h3>Remaining Quizzes (${missedUrls.length})</h3>
+      ${missedUrls.map(url => {
+        const title = getPageTitle(url);
+        return `<a href="/?goto=${encodeURIComponent(url)}" title="${escapeHtml(url)}">${escapeHtml(title)}</a>`;
+      }).join('')}
+    </div>
+  ` : '';
+  area.innerHTML = `
+    <div class="blocker">
+      <div class="progress-ring">
+        ${completedCount}/${totalCount}
+      </div>
+      <h2>Progress Incomplete</h2>
+      <p>You need to complete at least <strong>${REQUIRED_PROGRESS_PCT}%</strong> of the knowledge-check quizzes (<strong>${required} of ${totalCount}</strong>) before you can attempt the badge exam.
+      You have completed <strong>${completedCount}/${totalCount}</strong> (${pct}%).</p>
+      <a href="/" class="btn-back">&#8592; Continue Learning</a>
+      ${listHtml}
+    </div>
+  `;
+}
+
+function showExamReady() {
+  document.getElementById('quiz-check-area').innerHTML = `
+    <div style="background:#FEF3C7;border:1px solid #FCD34D;border-radius:10px;padding:14px 20px;font-size:14px;margin-bottom:24px;display:flex;align-items:center;gap:10px">
+      &#10003; You have completed at least <strong>${REQUIRED_PROGRESS_PCT}%</strong> of the curriculum. You are eligible for the badge exam.
+    </div>
+  `;
+  document.getElementById('exam-area').style.display = '';
+  renderQuestions();
+}
+
+function renderQuestions() {
+  const container = document.getElementById('questions-container');
+  currentQuestions = pickRandomQuestions(EXAM_QUESTION_COUNT);
+  container.innerHTML = currentQuestions.map((q, idx) => {
+    const isMulti = q.type === 'multi';
+    const inputType = isMulti ? 'checkbox' : 'radio';
+    const uid = idx + '_' + (q.sourceUrl || '').replace(/[^a-zA-Z0-9]/g, '_');
+    const optionsHtml = q.options.map((opt, i) => `
+      <label class="q-option">
+        <input type="${inputType}" name="${isMulti ? uid + '_' + i : uid}" value="${i}" data-index="${i}">
+        <span class="opt-text">${escapeHtml(opt)}</span>
+      </label>
+    `).join('');
+    return `
+      <div class="cert-question" data-qi="${idx}">
+        <div class="q-prompt">${escapeHtml(q.prompt)}</div>
+        <div class="q-options">${optionsHtml}</div>
+      </div>
+    `;
+  }).join('');
+  document.getElementById('cert-result').className = 'cert-result';
+  document.getElementById('cert-result').innerHTML = '';
+  document.getElementById('cert-submit').style.display = '';
+  document.getElementById('cert-retake').style.display = 'none';
+}
+
+function gradeExam() {
+  let correct = 0;
+  const total = currentQuestions.length;
+  for (let i = 0; i < currentQuestions.length; i++) {
+    const q = currentQuestions[i];
+    const qEl = document.querySelector(`.cert-question[data-qi="${i}"]`);
+    if (!qEl) continue;
+    const inputs = qEl.querySelectorAll('input:checked');
+    const allInputs = qEl.querySelectorAll('input');
+    const selected = Array.from(inputs).map(inp => parseInt(inp.value));
+    const isCorrect = Array.isArray(q.answer)
+      ? selected.length === q.answer.length && q.answer.every(a => selected.includes(a))
+      : selected.length === 1 && selected[0] === q.answer;
+    if (isCorrect) correct++;
+    qEl.classList.add(isCorrect ? 'correct' : 'incorrect');
+    for (const inp of allInputs) {
+      inp.disabled = true;
+      const idx = parseInt(inp.value);
+      const isCorrectAnswer = Array.isArray(q.answer) ? q.answer.includes(idx) : q.answer === idx;
+      const label = inp.closest('.q-option');
+      if (isCorrectAnswer) label.classList.add('correct-opt');
+      else if (inp.checked && !isCorrectAnswer) label.classList.add('incorrect-opt');
+    }
+  }
+  const score = Math.round((correct / total) * 100);
+  const passed = correct >= Math.ceil((PASS_SCORE / 100) * total);
+  const resultEl = document.getElementById('cert-result');
+  resultEl.className = 'cert-result visible ' + (passed ? 'pass' : 'fail');
+
+  if (passed) {
+    handleExamPassed(correct, total, score);
+  } else {
+    resultEl.innerHTML = `
+      <div class="result-score result-fail">${correct}/${total} (${score}%)</div>
+      <div class="result-label">You need at least ${PASS_SCORE}% (${Math.ceil((PASS_SCORE / 100) * total)}/${total}) to earn your badge.</div>
+      <div class="result-note">Review the material and retake the exam when you are ready.</div>
+    `;
+  }
+  document.getElementById('cert-submit').style.display = 'none';
+  document.getElementById('cert-retake').style.display = passed ? 'none' : '';
+}
+
+async function handleExamPassed(correct, total, score) {
+  window._lastExamPass = { correct, total, score };
+  const resultEl = document.getElementById('cert-result');
+
+  if (!window.MOE_AUTH || !window.MOE_AUTH.isLoggedIn()) {
+    resultEl.innerHTML = `
+      <div class="result-score result-pass">${correct}/${total} (${score}%)</div>
+      <div class="result-label">🎉 Congratulations! You passed the MOE Practitioner Exam.</div>
+      <div class="badge-claim-card">
+        <h3>Log In to Submit Your Badge Claim</h3>
+        <p style="color:var(--text-muted);font-size:14px;margin:8px auto 16px;max-width:440px;line-height:1.6">
+          Your exam completion will be officially recorded and submitted to the <strong>Linux Foundation</strong> to issue your digital badge on Credly. Please log in or create a free account.
+        </p>
+        <button type="button" class="btn-primary" id="btn-auth-claim" style="padding:12px 28px;font-size:15px">
+          Log In / Sign Up to Submit
+        </button>
+      </div>
+    `;
+    document.getElementById('btn-auth-claim')?.addEventListener('click', () => {
+      if (window.MOE_AUTH && window.MOE_AUTH.openModal) {
+        window.MOE_AUTH.openModal('register');
+      }
+    });
+    return;
+  }
+
+  // Check if already claimed
+  try {
+    const res = await fetch('/api/certification/status');
+    if (res.ok) {
+      const data = await res.json();
+      if (data.claimed) {
+        renderBadgeClaimed(data, correct, total, score);
+        return;
+      }
+    }
+  } catch (e) {}
+
+  renderBadgeClaimForm(correct, total, score);
+}
+
+function renderBadgeClaimForm(correct, total, score) {
+  const resultEl = document.getElementById('cert-result');
+  const user = (window.MOE_AUTH && window.MOE_AUTH.user) || {};
+  const initialFirst = escapeHtml(user.firstName || '');
+  const initialLast = escapeHtml(user.lastName || '');
+  const userEmail = escapeHtml(user.email || '');
+
+  resultEl.innerHTML = `
+    <div class="result-score result-pass">${correct}/${total} (${score}%)</div>
+    <div class="result-label">🎉 Congratulations! You passed the MOE Practitioner Exam.</div>
+    <div class="badge-claim-card">
+      <h3>Submit Your Credly Badge Details</h3>
+      <p style="font-size:14px;color:var(--text-muted);margin:8px auto 18px;max-width:460px;line-height:1.5">
+        Enter your legal name as it should appear on your verified <strong>Linux Foundation</strong> credential issued via Credly:
+      </p>
+      <form id="credly-claim-form" class="badge-claim-form">
+        <div class="name-fields-row">
+          <label>
+            <span>First Name *</span>
+            <input type="text" id="badge-first-name" required value="${initialFirst}" placeholder="First Name">
+          </label>
+          <label>
+            <span>Last Name *</span>
+            <input type="text" id="badge-last-name" required value="${initialLast}" placeholder="Last Name">
+          </label>
+        </div>
+        <div class="claim-recipient-note">
+          Badge will be issued to email: <strong>${userEmail}</strong>
+        </div>
+        <div id="claim-error" class="claim-error" style="display:none"></div>
+        <button type="submit" class="btn-primary" id="badge-claim-submit" style="width:100%;font-size:15px;padding:12px">
+          Submit Badge Claim
+        </button>
+      </form>
+    </div>
+  `;
+
+  const form = document.getElementById('credly-claim-form');
+  const errorEl = document.getElementById('claim-error');
+  const submitBtn = document.getElementById('badge-claim-submit');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errorEl.style.display = 'none';
+    errorEl.textContent = '';
+
+    const firstName = document.getElementById('badge-first-name').value.trim();
+    const lastName = document.getElementById('badge-last-name').value.trim();
+
+    if (!firstName || !lastName) {
+      errorEl.textContent = 'Please enter both your first name and last name.';
+      errorEl.style.display = 'block';
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Recording your submission...';
+
+    try {
+      const res = await fetch('/api/certification/claim', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ firstName, lastName, score }),
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || 'Failed to submit badge claim. Please try again.');
+      }
+
+      renderBadgeClaimed(data, correct, total, score);
+    } catch (err) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit Badge Claim';
+      errorEl.textContent = err.message || 'Submission failed. Please try again.';
+      errorEl.style.display = 'block';
+    }
+  });
+}
+
+function renderBadgeClaimed(claim, correct = 20, total = 20, score = 100) {
+  const resultEl = document.getElementById('cert-result');
+  const dateStr = claim.claimedAt ? new Date(claim.claimedAt).toLocaleDateString() : 'Today';
+  const fullName = `${escapeHtml(claim.firstName)} ${escapeHtml(claim.lastName)}`;
+  const email = escapeHtml(claim.email || (window.MOE_AUTH && window.MOE_AUTH.user && window.MOE_AUTH.user.email) || '');
+
+  resultEl.innerHTML = `
+    <div class="result-score result-pass">${correct}/${total} (${score}%)</div>
+    <div class="result-label">🎉 Certification Achieved & Recorded!</div>
+    <div class="badge-success-box">
+      <div style="font-size:44px;margin-bottom:10px">🎖️</div>
+      <h3>Badge Request Submitted Successfully</h3>
+      <p>
+        Your exam completion has been recorded in the database and queued for the <strong>Linux Foundation</strong> badging team.
+      </p>
+      <div style="background:var(--hairline);padding:14px 18px;border-radius:8px;text-align:left;font-size:14px;margin-bottom:16px;line-height:1.6">
+        <div><strong>Candidate:</strong> ${fullName}</div>
+        <div><strong>Recipient Email:</strong> ${email}</div>
+        <div><strong>Completion Date:</strong> ${escapeHtml(dateStr)}</div>
+        <div><strong>Status:</strong> <span style="color:#059669;font-weight:600">Submitted to Linux Foundation</span></div>
+      </div>
+      <p style="font-size:13px;color:var(--text-muted);margin-bottom:0">
+        You will receive an email invitation directly from <strong>Credly</strong> to accept and share your official MOE Practitioner badge.
+      </p>
+    </div>
+  `;
+}
+
+function retakeExam() {
+  window._lastExamPass = null;
+  renderQuestions();
+}
+
+// React to login/logout state changes in real time
+window.addEventListener('moe:auth-changed', () => {
+  if (window._lastExamPass) {
+    handleExamPassed(window._lastExamPass.correct, window._lastExamPass.total, window._lastExamPass.score);
+  }
+});
+
+function applyDarkMode() {
+  const saved = localStorage.getItem('moe-dark-mode');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const isDark = saved ? saved === 'dark' : prefersDark;
+  if (isDark) document.documentElement.classList.add('dark');
+}
+
+document.getElementById('dark-toggle').addEventListener('click', () => {
+  const html = document.documentElement;
+  const isDark = html.classList.toggle('dark');
+  localStorage.setItem('moe-dark-mode', isDark ? 'dark' : 'light');
+});
+
+document.getElementById('cert-submit').addEventListener('click', gradeExam);
+document.getElementById('cert-retake').addEventListener('click', retakeExam);
+
+applyDarkMode();
+init();
+</script>
+</body>
+</html>

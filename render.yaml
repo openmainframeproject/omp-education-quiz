@@ -1,0 +1,36 @@
+# Render Infrastructure as Code Blueprint
+# Mainframe Open Education (MOE) - Web Application & PostgreSQL Database
+# https://render.com/docs/blueprint-spec
+
+services:
+  - type: web
+    name: mainframe-open-education
+    runtime: node
+    plan: starter
+    region: oregon
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: moe-postgres
+          property: connectionString
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: ADMIN_SECRET
+        generateValue: true
+      - key: SANDBOX_URL
+        value: https://mainframe-sandbox.onrender.com
+      - key: PORT
+        value: 3000
+
+databases:
+  - name: moe-postgres
+    databaseName: moe_db
+    user: moe_user
+    plan: starter
+    region: oregon
+    ipAllowList: [] # Allows internal secure communication from Render services

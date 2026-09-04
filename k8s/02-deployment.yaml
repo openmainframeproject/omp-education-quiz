@@ -1,0 +1,79 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: moe-web
+  namespace: moe
+  labels:
+    app: moe-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: moe-web
+  template:
+    metadata:
+      labels:
+        app: moe-web
+    spec:
+      containers:
+        - name: web
+          image: ghcr.io/openmainframeproject/mainframe-open-education:latest
+          ports:
+            - containerPort: 3000
+          env:
+            - name: NODE_ENV
+              value: production
+            - name: PORT
+              value: "3000"
+            - name: TRUST_PROXY
+              value: "true"
+            - name: SESSION_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: moe-secrets
+                  key: SESSION_SECRET
+            - name: ADMIN_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: moe-secrets
+                  key: ADMIN_SECRET
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: moe-secrets
+                  key: DATABASE_URL
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 3000
+            initialDelaySeconds: 20
+            periodSeconds: 30
+            timeoutSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: 3000
+            initialDelaySeconds: 15
+            periodSeconds: 15
+            timeoutSeconds: 5
+            failureThreshold: 3
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: moe-web
+  namespace: moe
+spec:
+  selector:
+    app: moe-web
+  ports:
+    - port: 80
+      targetPort: 3000
+      protocol: TCP

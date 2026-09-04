@@ -1,0 +1,42 @@
+# DigitalOcean App Platform spec
+# Deploy:  doctl apps create --spec .do/app.yaml
+# Docs:    https://docs.digitalocean.com/products/app-platform/reference/deployment-config/
+#
+# The managed database below is injected into the app as $DATABASE_URL automatically.
+
+name: mainframe-open-education
+region: nyc
+
+services:
+  - name: web
+    dockerfile_path: Dockerfile
+    instance_count: 1
+    instance_size_slug: basic-xs
+    http_port: 3000
+    health_check:
+      http_path: /healthz
+      initial_delay_seconds: 20
+      period_seconds: 30
+      timeout_seconds: 5
+      success_threshold: 1
+      failure_threshold: 3
+    envs:
+      - key: NODE_ENV
+        value: production
+        scope: RUN_AND_BUILD_TIME
+      - key: SESSION_SECRET
+        value: ${SESSION_SECRET}
+        type: SECRET
+      - key: ADMIN_SECRET
+        value: ${ADMIN_SECRET}
+        type: SECRET
+      - key: SANDBOX_URL
+        value: https://mainframe-sandbox.onrender.com
+        scope: RUN_TIME
+
+databases:
+  - name: moe-postgres
+    engine: PG
+    version: "16"
+    size: db-s-1vcpu-1gb
+    num_nodes: 1

@@ -1,0 +1,11 @@
+# Copy to terraform.tfvars and fill in real values (gitignored).
+do_token = "dop_v1_xxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+session_secret = "generate-with-openssl-rand-hex-32"
+admin_secret   = "generate-with-openssl-rand-hex-32"
+
+# app_name            = "mainframe-open-education"
+# region              = "nyc3"
+# branch              = "main"
+# project_name        = "Linux Foundation - MOE"
+# instance_size_slug  = "basic-xs"

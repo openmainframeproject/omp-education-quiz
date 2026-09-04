@@ -1,0 +1,9 @@
+# Copy to terraform.tfvars and fill in real values (gitignored).
+# Point database_url at any managed PostgreSQL (DO, Neon, Supabase, RDS...).
+session_secret = "generate-with-openssl-rand-hex-32"
+admin_secret   = "generate-with-openssl-rand-hex-32"
+database_url   = "postgres://user:password@host:5432/moe?sslmode=require"
+
+# kubeconfig_context = "my-cluster"
+# namespace          = "moe"
+# replicas           = 1

@@ -24,3 +24,26 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# Node
+node_modules/
+
+# Local SQLite / libSQL database
+data/
+
+# Local junk / scratch
+*.full
+piston-sandbox/
+typescript
+MOE-WebPage.jpg
+
+# Terraform
+infra/*/.terraform/
+infra/*/.terraform.lock.hcl
+*.tfstate
+*.tfstate.*
+crash.log
+*.tfvars
+!*.tfvars.example
+override.tf
+override.tf.json

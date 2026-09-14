@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" class="viewer-shell">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mainframe Open Education</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="/logo/moebook.png">
+</head>
+<body>
+  <header id="top-header">
+    <div class="header-left">
+      <button id="sidebar-toggle" title="Toggle sidebar">&#9776;</button>
+      <a class="header-logo" href="/">
+        <img src="/logo/moebook.png" alt="MOE" class="header-logo-emblem">
+        <span class="header-title">MOE Documentation</span>
+      </a>
+    </div>
+    <div class="header-center">
+      <div class="header-search">
+        <input type="text" id="search-input" placeholder="Search documentation..." />
+        <span class="search-hint">&#8984;K</span>
+      </div>
+    </div>
+    <div class="header-right">
+      <div id="progress-container">
+        <span id="progress-text">Progress: 0/0</span>
+        <div class="progress-bar">
+          <div id="progress-fill" style="width: 0%;"></div>
+        </div>
+      </div>
+      <button id="sandbox-btn" class="header-btn" title="COBOL Sandbox">Sandbox</button>
+      <button id="dark-toggle" class="header-btn dark-toggle" title="Toggle dark mode">&#9790;</button>
+      <div id="auth-container" class="auth-container"></div>
+    </div>
+  </header>
+
+  <div id="app">
+    <aside id="sidebar">
+      <div id="sidebar-progress">
+        <div class="sp-row">
+          <span class="sp-label">Your Journey</span>
+          <span class="sp-pct" id="sp-pct">0%</span>
+        </div>
+        <div class="sp-bar">
+          <div id="sidebar-progress-fill" style="width:0%"></div>
+        </div>
+        <div class="sp-count" id="sp-count">0 of 0 lessons</div>
+      </div>
+      <nav id="nav-tree"></nav>
+    </aside>
+
+    <div id="content-area">
+      <div class="content-floats">
+        <img class="c-float" src="/logo/element1.png" style="top:4%;left:-2%;width:clamp(60px,7vw,110px);animation-delay:0s;opacity:0.04" alt="">
+        <img class="c-float" src="/logo/element3.png" style="top:12%;right:-3%;width:clamp(50px,6vw,90px);animation-delay:5s;opacity:0.03" alt="">
+        <img class="c-float" src="/logo/element5.png" style="bottom:8%;left:0%;width:clamp(55px,6.5vw,100px);animation-delay:10s;opacity:0.035" alt="">
+        <img class="c-float" src="/logo/element7.png" style="bottom:20%;right:-2%;width:clamp(45px,5vw,80px);animation-delay:15s;opacity:0.03" alt="">
+      </div>
+      <div id="content-toolbar">
+        <div id="breadcrumb"></div>
+        <span id="read-time" class="read-time"></span>
+        <div id="view-mode">
+          <button class="mode-btn active" data-mode="sandbox" title="COBOL Sandbox">Sandbox</button>
+        </div>
+      </div>
+      <div id="sandbox-container" style="display:none">
+        <div class="sandbox-header">
+          <h2>COBOL Sandbox</h2>
+          <div class="sandbox-controls">
+            <label class="sandbox-lang-label">
+              Language:
+              <select id="sandbox-lang">
+                <option value="cobol">COBOL</option>
+              </select>
+            </label>
+            <button id="sandbox-run" class="sandbox-run-btn">Run</button>
+          </div>
+        </div>
+        <div class="sandbox-editor-wrapper">
+          <textarea id="sandbox-editor" spellcheck="false" placeholder="Write your COBOL code here...">       IDENTIFICATION DIVISION.
+       PROGRAM-ID. HELLO.
+       PROCEDURE DIVISION.
+           DISPLAY "Hello from COBOL".
+           STOP RUN.</textarea>
+        </div>
+        <div id="sandbox-output" class="sandbox-output"></div>
+      </div>
+      <div id="page-content">
+        <div class="welcome">
+          <div class="welcome-logo-wrap">
+            <img src="/logo/moe-logo-black.png" alt="Mainframe Open Education" class="welcome-logo-img">
+          </div>
+          <p class="welcome-eyebrow">MAINFRAME OPEN EDUCATION</p>
+          <h1>Welcome to Mainframe Open Education</h1>
+          <p class="welcome-intro">
+            A structured learning path through mainframe fundamentals — from enterprise computing to career paths.
+            Work through the modules, pass the knowledge checks, and track your progress.
+          </p>
+
+          <div class="welcome-progress">
+            <div class="welcome-progress-head">
+              <span class="welcome-progress-label">Overall Progress</span>
+              <span class="welcome-progress-pct" id="welcome-progress-pct">0%</span>
+            </div>
+            <div class="welcome-progress-bar">
+              <div class="welcome-progress-fill" id="welcome-progress-fill" style="width:0%"></div>
+            </div>
+            <div class="welcome-progress-count" id="welcome-progress-count">0 lessons</div>
+            <div class="welcome-progress-quiz" id="welcome-progress-quiz"></div>
+          </div>
+
+          <div class="welcome-actions">
+            <a class="quickstart-btn quickstart-primary" href="#" data-action="continue">Continue Learning</a>
+            <a class="quickstart-btn quickstart-secondary" href="#" data-action="start">Start from the Beginning</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <aside id="toc-sidebar">
+      <div id="page-toc"></div>
+    </aside>
+  </div>
+
+  <div id="cmd-palette" class="cmd-palette">
+    <div class="cmd-modal">
+      <div class="cmd-header">
+        <input id="cmd-input" class="cmd-input" type="text" placeholder="Search pages..." autocomplete="off" spellcheck="false">
+        <span class="cmd-hint">ESC to close</span>
+      </div>
+      <div id="cmd-results" class="cmd-results"></div>
+    </div>
+  </div>
+
+  <!-- Auth modal (login / register) -->
+  <div id="auth-modal" class="auth-modal" data-moe-tab="login">
+    <div class="auth-modal-box">
+      <button type="button" class="auth-close" aria-label="Close">&times;</button>
+      <div class="auth-tabs">
+        <button type="button" class="auth-tab active" data-auth-tab="login">Log In</button>
+        <button type="button" class="auth-tab" data-auth-tab="register">Sign Up</button>
+      </div>
+      <div class="auth-panel active" data-auth-panel="login">
+        <h3>Welcome back</h3>
+        <p class="auth-sub">Log in to keep your progress synced across devices.</p>
+        <form>
+          <label>Email<input type="email" name="email" autocomplete="email" placeholder="you@example.com" required></label>
+          <label>Password<input type="password" name="password" autocomplete="current-password" placeholder="Your password" required></label>
+          <p class="auth-error"></p>
+          <button type="submit" class="auth-submit">Log In</button>
+        </form>
+      </div>
+      <div class="auth-panel" data-auth-panel="register">
+        <h3>Create your account</h3>
+        <p class="auth-sub">Your quiz progress will follow your account on any device.</p>
+        <form>
+          <label>Email<input type="email" name="email" autocomplete="email" placeholder="you@example.com" required></label>
+          <label>Password<input type="password" name="password" autocomplete="new-password" placeholder="At least 6 characters" required minlength="6"></label>
+          <p class="auth-error"></p>
+          <button type="submit" class="auth-submit">Create Account</button>
+        </form>
+      </div>
+      <p class="auth-note">Not logged in? Your progress is saved on this device only.</p>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

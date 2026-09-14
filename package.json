@@ -1,0 +1,22 @@
+{
+  "name": "moe-gitbook-viewer",
+  "version": "1.0.0",
+  "description": "Mainframe Open Education - GitBook-like viewer",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "node test-config.js && node test-health.js && node test-sitemap.js && node test-credly.js",
+    "db:migrate": "node -e \"require('./db').initSchema().then(() => { console.log('Done.'); process.exit(0); })\""
+  },
+  "dependencies": {
+    "@libsql/client": "^0.17.4",
+    "bcryptjs": "^3.0.3",
+    "cheerio": "^1.0.0",
+    "connect-pg-simple": "^10.0.0",
+    "express": "^4.18.2",
+    "express-session": "^1.19.0",
+    "marked": "^18.0.5",
+    "pg": "^8.23.0"
+  }
+}

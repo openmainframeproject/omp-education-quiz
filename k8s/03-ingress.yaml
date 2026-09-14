@@ -1,0 +1,26 @@
+# Optional ingress. Adjust className and host to your cluster
+# (nginx, traefik, Caddy, or a cloud load-balancer annotation).
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: moe-web
+  namespace: moe
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - moe.example.org
+      secretName: moe-web-tls
+  rules:
+    - host: moe.example.org
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: moe-web
+                port:
+                  number: 80

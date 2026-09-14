@@ -1,0 +1,9 @@
+node_modules/
+data/
+.DS_Store
+*.log
+.git/
+.gitignore
+infra/
+docs/
+.render.yaml

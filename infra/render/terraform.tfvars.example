@@ -1,0 +1,10 @@
+# Copy to terraform.tfvars and fill in real values (gitignored).
+render_api_key = "rnd_xxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+session_secret = "generate-with-openssl-rand-hex-32"
+admin_secret   = "generate-with-openssl-rand-hex-32"
+
+# service_name   = "mainframe-open-education"
+# image_url      = "ghcr.io/openmainframeproject/mainframe-open-education:latest"
+# service_plan   = "starter"
+# database_plan  = "basic-256mb"

@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mainframe Open Education (MOE)</title>
+  <meta name="description" content="Learn enterprise computing. Build real skills. Earn industry recognition. An open-source learning platform by the Open Mainframe Project.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/landing.css">
+  <link rel="icon" href="/logo/moebook.png">
+</head>
+<body>
+
+  <!-- ============ 1. NAVIGATION ============ -->
+  <header class="l-header">
+    <div class="l-container l-header-inner">
+      <a class="l-logo" href="/">
+        <img src="/logo/moebook.png" alt="MOE" class="l-logo-emblem">
+        <span class="l-logo-text">Mainframe Open Education</span>
+      </a>
+
+      <div class="l-search">
+        <svg class="l-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input id="l-search-input" type="text" placeholder="Search chapters, topics, writeups..." aria-label="Search documentation">
+      </div>
+
+      <nav class="l-nav">
+        <a href="#journeys">Learning Paths</a>
+        <a href="#curriculum">Curriculum</a>
+        <a href="#community">Community</a>
+        <a href="#events">Events</a>
+        <a href="#resources">Resources</a>
+      </nav>
+
+      <div class="l-header-actions">
+        <a class="l-btn l-btn-ghost" href="https://slack.openmainframeproject.org/" target="_blank" rel="noopener">Join Slack</a>
+        <div id="auth-container" class="auth-container"></div>
+      </div>
+
+      <button class="l-menu-btn" id="l-menu-btn" aria-label="Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+    <div class="l-mobile-nav" id="l-mobile-nav">
+      <a href="#journeys">Learning Paths</a>
+      <a href="#curriculum">Curriculum</a>
+      <a href="#experience">Experience</a>
+      <a href="#community">Community</a>
+      <a href="#events">Events</a>
+      <a href="#certifications">Badge</a>
+      <a href="#resources">Resources</a>
+      <a href="https://slack.openmainframeproject.org/" target="_blank" rel="noopener">Join Slack</a>
+    </div>
+  </header>
+
+  <!-- ============ 2. HERO ============ -->
+  <section class="l-hero">
+    <div class="l-container l-hero-inner">
+
+      <div class="l-hero-left">
+        <span class="l-hero-badge">Open Source Learning Platform</span>
+
+        <h1 class="l-hero-title">
+          Learn Enterprise Computing.<br>
+          <span class="l-accent">Build Real Skills.</span><br>
+          Earn Industry Recognition.
+        </h1>
+
+        <p class="l-hero-desc">
+          Mainframe Open Education (MOE) is a free, open-source learning platform sponsored by the
+          Open Mainframe Project. From enterprise fundamentals to modern mainframe careers, every
+          lesson moves you toward a real, recognized skill.
+        </p>
+
+        <div class="l-hero-cta">
+          <a class="l-btn l-btn-primary" href="/viewer.html">
+            Start Learning
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+          </a>
+          <a class="l-btn l-btn-outline" href="#curriculum">Browse Curriculum</a>
+        </div>
+
+        <div class="l-hero-stats">
+          <div class="l-hero-stat"><strong>20+</strong><span>Courses</span></div>
+          <div class="l-hero-stat"><strong>500+</strong><span>Contributors</span></div>
+          <div class="l-hero-stat"><strong>15</strong><span>Organizations</span></div>
+          <div class="l-hero-stat"><strong>100%</strong><span>Free</span></div>
+        </div>
+      </div>
+
+      <div class="l-hero-right">
+        <div class="l-hero-media">
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&h=800&fit=crop"
+               alt="Students collaborating in a modern office" class="l-hero-img">
+
+          <div class="l-float-badge l-float-badge--1">
+            <span class="l-float-check">&#10003;</span>
+            <div>
+              <strong>New module learned</strong>
+              <span>Mainframe 101</span>
+            </div>
+          </div>
+
+          <div class="l-float-badge l-float-badge--2">
+            <span class="l-float-check">&#10003;</span>
+            <div>
+              <strong>Badge earned</strong>
+              <span>MOE Practitioner</span>
+            </div>
+          </div>
+
+          <div class="l-float-badge l-float-badge--3">
+            <span class="l-float-check">&#10003;</span>
+            <div>
+              <strong>Contribution made</strong>
+              <span>Documentation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ 3. MAINFRAME OPEN EDUCATION BRAND ============ -->
+  <section class="l-trust">
+    <div class="l-container l-trust-container">
+      <div class="l-brand-showcase">
+        <img src="/logo/moe-logo-black.png" alt="Mainframe Open Education Logo" class="l-brand-logo-img">
+        <span class="l-brand-title">Mainframe Open Education</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 4. LEARNING PATHS / JOURNEYS ============ -->
+  <section class="l-section" id="journeys">
+    <div class="l-container">
+      <div class="l-section-head l-section-head--center">
+        <span class="l-eyebrow">Where do I start?</span>
+        <h2 class="l-section-title">Guided Learning Journeys</h2>
+        <p class="l-section-sub">Not a catalog — a path. Follow a structured roadmap from your first lesson to a mainframe career.</p>
+      </div>
+
+      <div class="l-journeys">
+        <a class="l-journey-card" href="/viewer.html?goto=https%3A%2F%2Fopen-mainframe-project.gitbook.io%2Fmainframe-open-education-project%2Fintroduction-what-is-enterprise-computing.md">
+          <span class="l-journey-num">01</span>
+          <span class="l-journey-icon" style="background:#FEF3C7;color:#92400E">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          </span>
+          <span class="l-journey-label">Beginner Journey</span>
+          <h3>Mainframe Fundamentals</h3>
+          <p>No experience required. Learn what enterprise computing and mainframes actually are.</p>
+          <span class="l-journey-link">Start here
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+          </span>
+        </a>
+
+        <a class="l-journey-card" href="/viewer.html?goto=https%3A%2F%2Fopen-mainframe-project.gitbook.io%2Fmainframe-open-education-project%2Fchapter-2-mainframe-101-foundational-technology.md">
+          <span class="l-journey-num">02</span>
+          <span class="l-journey-icon" style="background:#DCEEFF;color:#1E4A9E">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </span>
+          <span class="l-journey-label">Programming</span>
+          <h3>COBOL &amp; Enterprise Code</h3>
+          <p>Get hands-on with COBOL and understand the languages that run global business.</p>
+          <span class="l-journey-link">Explore
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+          </span>
+        </a>
+
+        <a class="l-journey-card" href="/viewer.html?goto=https%3A%2F%2Fopen-mainframe-project.gitbook.io%2Fmainframe-open-education-project%2Fchapter-2-mainframe-101-foundational-technology%2Fjob-control-language-and-system-display-and-search-facility%2Funderstanding-the-jcl-job-control-language.md">
+          <span class="l-journey-num">03</span>
+          <span class="l-journey-icon" style="background:#FFE9DD;color:#C2410C">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><path d="M6 6h.01M6 18h.01"/></svg>
+          </span>
+          <span class="l-journey-label">System Administration</span>
+          <h3>z/OS, JCL &amp; Operations</h3>
+          <p>Master datasets, JCL, storage, and the day-to-day operation of a mainframe shop.</p>
+          <span class="l-journey-link">Explore
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+          </span>
+        </a>
+
+        <a class="l-journey-card" href="/viewer.html?goto=https%3A%2F%2Fopen-mainframe-project.gitbook.io%2Fmainframe-open-education-project%2Fchapter-1-what-is-a-mainframe-today%2Frole-of-the-mainframe-today%2Fhybrid-cloud.md">
+          <span class="l-journey-num">04</span>
+          <span class="l-journey-icon" style="background:#F4EFE6;color:#6B5630">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19a4.5 4.5 0 1 0-.43-8.98A6 6 0 1 0 6 14.5"/><path d="M12 22v-8m-3 3 3-3 3 3"/></svg>
+          </span>
+          <span class="l-journey-label">DevOps</span>
+          <h3>Cloud, Hybrid &amp; Modernization</h3>
+          <p>Connect mainframes to modern cloud, hybrid, and DevOps workflows.</p>
+          <span class="l-journey-link">Explore
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+          </span>
+        </a>
+
+        <a class="l-journey-card" href="/viewer.html?goto=https%3A%2F%2Fopen-mainframe-project.gitbook.io%2Fmainframe-open-education-project%2Fchapter-5-career-paths-and-opportunities.md">
+          <span class="l-journey-num">05</span>
+          <span class="l-journey-icon" style="background:#DCEEFF;color:#1E4A9E">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.5 13 17 22l-5-3-5 3 1.5-9"/></svg>
+          </span>
+          <span class="l-journey-label">Career Preparation</span>
+          <h3>Roles, Paths &amp; Badges</h3>
+          <p>Discover mainframe careers, prepare for roles, and earn your MOE practitioner badge.</p>
+          <span class="l-journey-link">Explore
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 5. CURRICULUM OVERVIEW ============ -->
+  <section class="l-section l-section--alt" id="curriculum">
+    <div class="l-container">
+      <div class="l-section-head">
+        <div>
+          <span class="l-eyebrow">What will I learn?</span>
+          <h2 class="l-section-title">The MOE Curriculum - 6 Chapters</h2>
+          <p class="l-section-sub">From enterprise fundamentals to career paths</p>
+        </div>
+        <div class="l-section-actions">
+          <a class="l-show-all" href="/viewer.html">Show All</a>
+          <div class="l-arrows">
+            <button class="l-arrow" id="l-prev" aria-label="Previous">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <button class="l-arrow" id="l-next" aria-label="Next">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="l-carousel" id="l-carousel">
+        <div class="l-track" id="l-track">
+
+          <a class="l-cur-card" href="/viewer.html?goto=https%3A%2F%2Fopen-mainframe-project.gitbook.io%2Fmainframe-open-education-project%2Fintroduction-what-is-enterprise-computing.md">
+            <span class="l-cur-ribbon" style="background:#FEF3C7;color:#92400E">Introduction</span>
+            <span class="l-cur-icon" style="background:linear-gradient(135deg,#FEF3C7,#FDE68A)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#92400E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+            </span>
+            <span class="l-cur-title">What is Enterprise Computing?</span>
+            <span class="l-cur-desc">Foundations of enterprise computing and the modern mainframe landscape.</span>
+            <div class="l-cur-meta">
+              <span><strong>1</strong> lesson</span>
+              <span><strong>15m</strong> est.</span>
+            </div>
+            <div class="l-cur-progress"><div class="l-cur-progress-fill" style="width:0%"></div></div>
+            <span class="l-cur-badge">Beginner</span>
+          </a>
+
+          <a class="l-cur-card" href="/viewer.html?goto=https%3A%2F%2Fopen-mainframe-project.gitbook.io%2Fmainframe-open-education-project%2Fchapter-1-what-is-a-mainframe-today.md">
+            <span class="l-cur-ribbon" style="background:#DCEEFF;color:#1E4A9E">Chapter 1</span>
+            <span class="l-cur-icon" style="background:linear-gradient(135deg,#DCEEFF,#B7D9FF)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1E4A9E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg>
+            </span>
+            <span class="l-cur-title">What is a Mainframe Today?</span>
+            <span class="l-cur-desc">Modern architecture, hybrid cloud, security, and the mainframe's evolving role.</span>
+            <div class="l-cur-meta">
+              <span><strong>21</strong> lessons</span>
+              <span><strong>5h 15m</strong> est.</span>
+            </div>
+            <div class="l-cur-progress"><div class="l-cur-progress-fill" style="width:0%"></div></div>
+            <span class="l-cur-badge">Beginner</span>
+          </a>
+
+          <a class="l-cur-card" href="/viewer.html?goto=https%3A%2F%2Fopen-mainframe-project.gitbook.io%2Fmainframe-open-education-project%2Fchapter-2-mainframe-101-foundational-technology.md">
+            <span class="l-cur-ribbon" style="background:#FFE9DD;color:#C2410C">Chapter 2</span>
+            <span class="l-cur-icon" style="background:linear-gradient(135deg,#FFE9DD,#FFD1B3)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#C2410C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+            </span>
+            <span class="l-cur-title">Mainframe 101 - Foundational Tech</span>
+            <span class="l-cur-desc">z/OS, JCL, datasets, storage, and enterprise development fundamentals.</span>
+            <div class="l-cur-meta">
+              <span><strong>39</strong> lessons</span>
+              <span><strong>9h 45m</strong> est.</span>
+            </div>
+            <div class="l-cur-progress"><div class="l-cur-progress-fill" style="width:0%"></div></div>
+            <span class="l-cur-badge">Beginner</span>
+          </a>
+
+          <a class="l-cur-card" href="/viewer.html?goto=https%3A%2F%2Fopen-mainframe-project.gitbook.io%2Fmainframe-open-education-project%2Fchapter-3-roles-in-mainframe.md">
+            <span class="l-cur-ribbon" style="background:#F4EFE6;color:#6B5630">Chapter 3</span>
+            <span class="l-cur-icon" style="background:linear-gradient(135deg,#F4EFE6,#E9DFCB)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#6B5630" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </span>
+            <span class="l-cur-title">Roles in Mainframe</span>
+            <span class="l-cur-desc">Career categories, responsibilities, and team structures in mainframe shops.</span>
+            <div class="l-cur-meta">
+              <span><strong>3</strong> lessons</span>
+              <span><strong>45m</strong> est.</span>
+            </div>
+            <div class="l-cur-progress"><div class="l-cur-progress-fill" style="width:0%"></div></div>
+            <span class="l-cur-badge">Beginner</span>
+          </a>
+
+          <a class="l-cur-card" href="/viewer.html?goto=https%3A%2F%2Fopen-mainframe-project.gitbook.io%2Fmainframe-open-education-project%2Fchapter-4-deeper-dive-in-role-chosen.md">
+            <span class="l-cur-ribbon" style="background:#DCEEFF;color:#1E4A9E">Chapter 4</span>
+            <span class="l-cur-icon" style="background:linear-gradient(135deg,#DCEEFF,#B7D9FF)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1E4A9E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="m9 12 2 2 4-4"/></svg>
+            </span>
+            <span class="l-cur-title">Deeper Dive in Role Chosen</span>
+            <span class="l-cur-desc">Operations, development, software engineering, and architecture paths.</span>
+            <div class="l-cur-meta">
+              <span><strong>5</strong> lessons</span>
+              <span><strong>1h 15m</strong> est.</span>
+            </div>
+            <div class="l-cur-progress"><div class="l-cur-progress-fill" style="width:0%"></div></div>
+            <span class="l-cur-badge">Intermediate</span>
+          </a>
+
+          <a class="l-cur-card" href="/viewer.html?goto=https%3A%2F%2Fopen-mainframe-project.gitbook.io%2Fmainframe-open-education-project%2Fchapter-5-career-paths-and-opportunities.md">
+            <span class="l-cur-ribbon" style="background:#FFE9DD;color:#C2410C">Chapter 5</span>
+            <span class="l-cur-icon" style="background:linear-gradient(135deg,#FFE9DD,#FFD1B3)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#C2410C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.5 13 17 22l-5-3-5 3 1.5-9"/></svg>
+            </span>
+            <span class="l-cur-title">Career Paths &amp; Opportunities</span>
+            <span class="l-cur-desc">Professional journeys, learning programs, and digital certificate badges.</span>
+            <div class="l-cur-meta">
+              <span><strong>12</strong> lessons</span>
+              <span><strong>3h</strong> est.</span>
+            </div>
+            <div class="l-cur-progress"><div class="l-cur-progress-fill" style="width:0%"></div></div>
+            <span class="l-cur-badge">Intermediate</span>
+          </a>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 6. LEARNING EXPERIENCE PREVIEW ============ -->
+  <section class="l-section" id="experience">
+    <div class="l-container">
+      <div class="l-section-head">
+        <div>
+          <span class="l-eyebrow">How does learning work?</span>
+          <h2 class="l-section-title">A Learning Experience Built for Focus</h2>
+          <p class="l-section-sub">Everything you need to learn, practice, and verify your skills — in one place.</p>
+        </div>
+        <a class="l-btn l-btn-outline" href="/viewer.html">Try the Reader</a>
+      </div>
+
+      <div class="l-experience">
+        <div class="l-experience-preview">
+          <div class="l-preview-window">
+            <div class="l-preview-bar">
+              <span class="l-preview-dot" style="background:#FCA5A5"></span>
+              <span class="l-preview-dot" style="background:#FCD34D"></span>
+              <span class="l-preview-dot" style="background:#93C5FD"></span>
+              <span class="l-preview-title">Chapter 2 - JCL Basics</span>
+            </div>
+            <div class="l-preview-body">
+              <h4>Understanding the JOB Statement</h4>
+              <p class="l-preview-text">Every batch job on a mainframe begins with a JOB statement. It tells z/OS who is running the job, how it should be run, and what happens when it finishes...</p>
+              <pre class="l-preview-code"><span class="l-c-key">//MYJOB</span> JOB <span class="l-c-str">'ACCT'</span>,<span class="l-c-key">'TUSHAR'</span>,
+      <span class="l-c-key">CLASS</span>=A,<span class="l-c-key">MSGLEVEL</span>=(1,1)</pre>
+              <div class="l-preview-quiz">
+                <span class="l-preview-q-label">Knowledge Check</span>
+                <p>What does the JOB statement do?</p>
+                <div class="l-preview-opt"><span class="l-preview-check">&#10003;</span> Starts a batch job and sets its attributes</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="l-experience-list">
+          <div class="l-exp-item">
+            <span class="l-exp-icon" style="background:#DCEEFF;color:#1E4A9E">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>
+            </span>
+            <div><h4>Interactive Reader</h4><p>Clean, distraction-free reading of every MOE page, with built-in search and table of contents.</p></div>
+          </div>
+          <div class="l-exp-item">
+            <span class="l-exp-icon" style="background:#FFE9DD;color:#C2410C">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </span>
+            <div><h4>Embedded Code Editor</h4><p>Write and run real COBOL right inside a lesson — no setup required.</p></div>
+          </div>
+          <div class="l-exp-item">
+            <span class="l-exp-icon" style="background:#FEF3C7;color:#92400E">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+            </span>
+            <div><h4>Knowledge Checks</h4><p>Short quizzes at the end of every page so you can confirm what you learned.</p></div>
+          </div>
+          <div class="l-exp-item">
+            <span class="l-exp-icon" style="background:#F4EFE6;color:#6B5630">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v6.5a2.5 2.5 0 0 1-5 0V2"/><path d="M15 2v6.5a2.5 2.5 0 0 0 5 0V2"/><path d="M10 13v7a2 2 0 0 0 4 0"/><path d="M15 6.5h3a4 4 0 0 1 0 8h-3"/><path d="M9 6.5H6a4 4 0 0 0 0 8h3"/></svg>
+            </span>
+            <div><h4>Practice Labs</h4><p>Hands-on sandbox exercises for COBOL, JCL, and system concepts.</p></div>
+          </div>
+          <div class="l-exp-item">
+            <span class="l-exp-icon" style="background:#DCEEFF;color:#1E4A9E">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><circle cx="12" cy="16" r="2"/></svg>
+            </span>
+            <div><h4>AI Assistant</h4><p>Ask questions while you learn and get grounded, contextual answers.</p></div>
+          </div>
+          <div class="l-exp-item">
+            <span class="l-exp-icon" style="background:#FFE9DD;color:#C2410C">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+            </span>
+            <div><h4>Progress Tracking</h4><p>See your completion rate across chapters and keep your streak alive.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 7. PROJECTS & CONTRIBUTIONS ============ -->
+  <section class="l-section l-section--alt" id="projects">
+    <div class="l-container l-project-grid">
+
+      <div class="l-project-left">
+        <span class="l-eyebrow">How do I practice?</span>
+        <h2 class="l-section-title">Learn by Contributing</h2>
+        <p class="l-section-sub">Reading is step one. Real learning happens when you contribute to the open-source project itself.</p>
+        <a class="l-btn l-btn-primary" href="https://open-mainframe-project.gitbook.io/mainframe-open-education-project/welcome-learn-and-contribute-to-moe/who-can-contribute/become-a-contributor.md" target="_blank" rel="noopener">
+          Become a Contributor
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+        </a>
+      </div>
+
+      <div class="l-project-flow">
+        <div class="l-flow-step"><span class="l-flow-num">1</span><div><strong>Read</strong><small>Start with a topic page</small></div></div>
+        <div class="l-flow-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+        </div>
+        <div class="l-flow-step"><span class="l-flow-num">2</span><div><strong>Practice</strong><small>Try it in the sandbox</small></div></div>
+        <div class="l-flow-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+        </div>
+        <div class="l-flow-step"><span class="l-flow-num">3</span><div><strong>Solve Challenge</strong><small>Tackle a community issue</small></div></div>
+        <div class="l-flow-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+        </div>
+        <div class="l-flow-step"><span class="l-flow-num">4</span><div><strong>Submit Project</strong><small>Share your writeup or code</small></div></div>
+        <div class="l-flow-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+        </div>
+        <div class="l-flow-step"><span class="l-flow-num">5</span><div><strong>Receive Review</strong><small>Get feedback from mentors</small></div></div>
+        <div class="l-flow-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+        </div>
+        <div class="l-flow-step"><span class="l-flow-num">6</span><div><strong>Open Source Contribution</strong><small>Merged into the project</small></div></div>
+        <div class="l-flow-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+        </div>
+        <div class="l-flow-step l-flow-step--end"><span class="l-flow-num">&#10003;</span><div><strong>Earn Badge</strong><small>Get publicly recognized</small></div></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ 8. COMMUNITY ============ -->
+  <section class="l-section" id="community">
+    <div class="l-container">
+      <div class="l-section-head l-section-head--center">
+        <span class="l-eyebrow">Who will I learn with?</span>
+        <h2 class="l-section-title">A Community That Learns Together</h2>
+        <p class="l-section-sub">Learning is social. Connect with mainframers around the world and grow with the ecosystem.</p>
+      </div>
+
+      <div class="l-community-grid">
+        <div class="l-comm-card">
+          <span class="l-comm-icon" style="background:#DCEEFF;color:#1E4A9E">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </span>
+          <h3>Discussion Forums</h3>
+          <p>Ask questions, share answers, and get unstuck on any topic.</p>
+        </div>
+        <div class="l-comm-card">
+          <span class="l-comm-icon" style="background:#FFE9DD;color:#C2410C">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </span>
+          <h3>Study Groups</h3>
+          <p>Join or start a group for your chapter, role, or goal.</p>
+        </div>
+        <div class="l-comm-card">
+          <span class="l-comm-icon" style="background:#FEF3C7;color:#92400E">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+          </span>
+          <h3>Open Source Contributions</h3>
+          <p>Contribute docs, code, and content to the MOE project on GitHub.</p>
+        </div>
+        <div class="l-comm-card">
+          <span class="l-comm-icon" style="background:#F4EFE6;color:#6B5630">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </span>
+          <h3>Mentorship</h3>
+          <p>Get guided by experienced mainframers who review your work.</p>
+        </div>
+        <div class="l-comm-card">
+          <span class="l-comm-icon" style="background:#DCEEFF;color:#1E4A9E">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1M3 8h1a4 4 0 1 1 0 8H3M8 12h8"/></svg>
+          </span>
+          <h3>Slack &amp; Discord</h3>
+          <p>Real-time conversations with the #omp-education-project community.</p>
+        </div>
+        <div class="l-comm-card">
+          <span class="l-comm-icon" style="background:#FFE9DD;color:#C2410C">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M5 12h14M5 7h14"/></svg>
+          </span>
+          <h3>Community Calls</h3>
+          <p>Monthly sessions to meet the team and shape the roadmap together.</p>
+        </div>
+      </div>
+
+      <div class="l-community-cta">
+        <a class="l-btn l-btn-primary" href="https://slack.openmainframeproject.org/" target="_blank" rel="noopener">Join the Community</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 9. LIVE LEARNING ============ -->
+  <section class="l-section l-section--alt" id="events">
+    <div class="l-container">
+      <div class="l-section-head">
+        <div>
+          <span class="l-eyebrow">How can I engage live?</span>
+          <h2 class="l-section-title">Live Learning &amp; Events</h2>
+          <p class="l-section-sub">Self-paced isn't the only way. Join live sessions and connect in real time.</p>
+        </div>
+        <a class="l-show-all" href="https://open-mainframe-project.gitbook.io/mainframe-open-education-project/welcome-learn-and-contribute-to-moe/events-by-moe.md" target="_blank" rel="noopener">View All Events</a>
+      </div>
+
+      <div class="l-events-grid">
+
+        <article class="l-event-card">
+          <span class="l-event-freq" style="color:#1E4A9E;background:#DCEEFF">Upcoming</span>
+          <span class="l-event-icon" style="background:#DCEEFF;color:#1E4A9E">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          </span>
+          <h3>Upcoming Webinar</h3>
+          <p>Modern mainframes in the cloud — a live walkthrough with practitioners.</p>
+          <div class="l-event-meta">
+            <span>Jun 18, 2026</span><span>60 min</span><span>MOE Core Team</span>
+          </div>
+          <a class="l-btn l-btn-primary l-btn--sm" href="https://open-mainframe-project.gitbook.io/mainframe-open-education-project/welcome-learn-and-contribute-to-moe/events-by-moe.md" target="_blank" rel="noopener">Register</a>
+        </article>
+
+        <article class="l-event-card">
+          <span class="l-event-freq" style="color:#C2410C;background:#FFE9DD">Weekly</span>
+          <span class="l-event-icon" style="background:#FFE9DD;color:#C2410C">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </span>
+          <h3>Office Hours</h3>
+          <p>Drop in with any question — mentors are online to help you unblock.</p>
+          <div class="l-event-meta">
+            <span>Every Friday</span><span>45 min</span><span>Mentors</span>
+          </div>
+          <a class="l-btn l-btn-primary l-btn--sm" href="https://slack.openmainframeproject.org/" target="_blank" rel="noopener">Register</a>
+        </article>
+
+        <article class="l-event-card">
+          <span class="l-event-freq" style="color:#92400E;background:#FEF3C7">Monthly</span>
+          <span class="l-event-icon" style="background:#FEF3C7;color:#92400E">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </span>
+          <h3>Community Meetup</h3>
+          <p>Monthly get-together for learners, educators, and professionals.</p>
+          <div class="l-event-meta">
+            <span>Jul 03, 2026</span><span>90 min</span><span>MOE Community</span>
+          </div>
+          <a class="l-btn l-btn-primary l-btn--sm" href="https://open-mainframe-project.gitbook.io/mainframe-open-education-project/welcome-learn-and-contribute-to-moe/events-by-moe.md" target="_blank" rel="noopener">Register</a>
+        </article>
+
+        <article class="l-event-card">
+          <span class="l-event-freq" style="color:#6B5630;background:#F4EFE6">Quarterly</span>
+          <span class="l-event-icon" style="background:#F4EFE6;color:#6B5630">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 15-2-6a2 2 0 0 0-2-1H6a2 2 0 0 0-2 1l-2 6"/><path d="M4 15a2 2 0 0 1 4 0M12 15a2 2 0 0 1 4 0M20 15a2 2 0 0 1 4 0M2 15h4M8 15h4M14 15h4M20 15h2"/><path d="M4 15a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v6H4z"/></svg>
+          </span>
+          <h3>Hackathon</h3>
+          <p>Build a mainframe project in a weekend with team support.</p>
+          <div class="l-event-meta">
+            <span>Sep 2026</span><span>48 hrs</span><span>OMP Events</span>
+          </div>
+          <a class="l-btn l-btn-primary l-btn--sm" href="https://open-mainframe-project.gitbook.io/mainframe-open-education-project/welcome-learn-and-contribute-to-moe/events-by-moe.md" target="_blank" rel="noopener">Register</a>
+        </article>
+
+        <article class="l-event-card">
+          <span class="l-event-freq" style="color:#1E4A9E;background:#DCEEFF">Ad-hoc</span>
+          <span class="l-event-icon" style="background:#DCEEFF;color:#1E4A9E">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </span>
+          <h3>Workshop</h3>
+          <p>Hands-on COBOL and JCL workshops with guided exercises.</p>
+          <div class="l-event-meta">
+            <span>Jul 15, 2026</span><span>120 min</span><span>Instructors</span>
+          </div>
+          <a class="l-btn l-btn-primary l-btn--sm" href="https://open-mainframe-project.gitbook.io/mainframe-open-education-project/welcome-learn-and-contribute-to-moe/events-by-moe.md" target="_blank" rel="noopener">Register</a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 10. SUCCESS STORIES ============ -->
+  <section class="l-section" id="stories">
+    <div class="l-container l-stories">
+      <div class="l-stories-head">
+        <span class="l-eyebrow">What outcomes are possible?</span>
+        <h2 class="l-section-title">Real Stories from Real People</h2>
+        <p class="l-section-sub">Short journeys, real transitions — from the MOE community.</p>
+      </div>
+
+      <div class="l-stories-grid">
+        <article class="l-story-card">
+          <div class="l-story-top">
+            <span class="l-tst-avatar" style="background:#1E4A9E">A</span>
+            <div class="l-story-name">
+              <strong>Ananya R.</strong>
+              <span>Software Engineer</span>
+            </div>
+          </div>
+          <ul class="l-story-path">
+            <li>Student</li>
+            <li>Completed learning path</li>
+            <li>Joined internship</li>
+            <li>Now Software Engineer</li>
+          </ul>
+          <p>"I joined with zero mainframe background. A few months later I landed my first mainframe internship — the roadmap made it feel possible."</p>
+        </article>
+
+        <article class="l-story-card">
+          <div class="l-story-top">
+            <span class="l-tst-avatar" style="background:#C2410C">M</span>
+            <div class="l-story-name">
+              <strong>Dr. Miguel S.</strong>
+              <span>Educator &amp; Researcher</span>
+            </div>
+          </div>
+          <ul class="l-story-path">
+            <li>Graduate Student</li>
+            <li>Used MOE for research</li>
+            <li>Became contributor</li>
+            <li>Now teaches mainframes</li>
+          </ul>
+          <p>"The curriculum gave my research the enterprise context I was missing. Now I teach it to my own students."</p>
+        </article>
+
+        <article class="l-story-card">
+          <div class="l-story-top">
+            <span class="l-tst-avatar" style="background:#92400E">J</span>
+            <div class="l-story-name">
+              <strong>Janet W.</strong>
+              <span>Mainframe Developer</span>
+            </div>
+          </div>
+          <ul class="l-story-path">
+            <li>Career Changer</li>
+            <li>Learned on MOE</li>
+            <li>Built a portfolio</li>
+            <li>Now mainframe developer</li>
+          </ul>
+          <p>"After 12 years in retail, MOE gave me a realistic, welcoming path into tech. I'm a mainframe developer now."</p>
+        </article>
+
+        <article class="l-story-card">
+          <div class="l-story-top">
+            <span class="l-tst-avatar" style="background:#6B5630">K</span>
+            <div class="l-story-name">
+              <strong>Kwame O.</strong>
+              <span>Platform Engineer</span>
+            </div>
+          </div>
+          <ul class="l-story-path">
+            <li>Intern</li>
+            <li>Contributed documentation</li>
+            <li>Led the student group</li>
+            <li>Now Platform Engineer</li>
+          </ul>
+          <p>"Started as an intern contributing docs. Today I run the student user group and mentor the next cohort."</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 11. CERTIFICATIONS ============ -->
+  <section class="l-section l-section--alt" id="certifications">
+    <div class="l-container l-cert-grid">
+
+      <div class="l-cert-left">
+        <span class="l-eyebrow">What do I earn?</span>
+        <h2 class="l-section-title">The MOE Practitioner Badge</h2>
+        <p class="l-section-sub">
+          MOE doesn't just hand out recognition. Earn your badge by completing the full
+          learning journey — and show it anywhere.
+        </p>
+        <div class="l-cert-points">
+          <div class="l-cert-point"><strong>Free forever</strong><span>No paywalls, no credit cards.</span></div>
+          <div class="l-cert-point"><strong>Skills-based</strong><span>Prove what you actually learned.</span></div>
+          <div class="l-cert-point"><strong>Recognized</strong><span>Issued by the Linux Foundation via Credly.</span></div>
+        </div>
+        <a class="l-btn l-btn-primary" href="/certification">View Badge Exam</a>
+      </div>
+
+      <ol class="l-cert-flow">
+        <li><span class="l-cert-flow-num">1</span><div><strong>Complete Modules</strong><small>Complete at least 80% of the knowledge-check quizzes across the curriculum.</small></div></li>
+        <li><span class="l-cert-flow-num">2</span><div><strong>Pass Assessment</strong><small>Score at least 80% on the 20-question badge exam.</small></div></li>
+        <li><span class="l-cert-flow-num">3</span><div><strong>Receive Badge</strong><small>Your MOE practitioner badge is issued by the Linux Foundation via Credly.</small></div></li>
+        <li><span class="l-cert-flow-num l-cert-flow-num--end">&#10003;</span><div><strong>Share on LinkedIn</strong><small>Publish your achievement with one click.</small></div></li>
+      </ol>
+
+    </div>
+  </section>
+
+  <!-- ============ 12. RESOURCES ============ -->
+  <section class="l-section" id="resources">
+    <div class="l-container">
+      <div class="l-section-head l-section-head--center">
+        <span class="l-eyebrow">More ways to learn</span>
+        <h2 class="l-section-title">Resources</h2>
+        <p class="l-section-sub">Not every visitor wants a course. Explore supporting materials at your own pace.</p>
+      </div>
+
+      <div class="l-resources-grid">
+        <a class="l-resource-card" href="/viewer.html">
+          <span class="l-resource-icon" style="background:#DCEEFF;color:#1E4A9E">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          </span>
+          <h3>Documentation</h3>
+          <p>The full MOE curriculum, searchable and always free.</p>
+        </a>
+        <a class="l-resource-card" href="https://open-mainframe-project.gitbook.io/mainframe-open-education-project/mainframe-101-blog-series.md" target="_blank" rel="noopener">
+          <span class="l-resource-icon" style="background:#FFE9DD;color:#C2410C">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>
+          </span>
+          <h3>Blog</h3>
+          <p>Writeups and deep dives from the community.</p>
+        </a>
+        <a class="l-resource-card" href="https://open-mainframe-project.gitbook.io/mainframe-open-education-project/welcome-learn-and-contribute-to-moe/events-by-moe.md" target="_blank" rel="noopener">
+          <span class="l-resource-icon" style="background:#FEF3C7;color:#92400E">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 13 5.22 3.48a.5.5 0 0 0 .78-.41V7.93a.5.5 0 0 0-.78-.41L16 11z"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg>
+          </span>
+          <h3>Videos</h3>
+          <p>Recorded sessions and tutorials to watch anytime.</p>
+        </a>
+        <a class="l-resource-card" href="/viewer.html">
+          <span class="l-resource-icon" style="background:#F4EFE6;color:#6B5630">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 13h6M9 17h4"/></svg>
+          </span>
+          <h3>Cheat Sheets</h3>
+          <p>JCL, z/OS, and COBOL quick references.</p>
+        </a>
+        <a class="l-resource-card" href="#journeys">
+          <span class="l-resource-icon" style="background:#DCEEFF;color:#1E4A9E">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v16h16"/><path d="m4 14 4-4 4 4 8-8"/></svg>
+          </span>
+          <h3>Learning Roadmaps</h3>
+          <p>Visual paths from beginner to professional.</p>
+        </a>
+        <a class="l-resource-card" href="https://github.com/open-mainframe-project/mainframe-open-education" target="_blank" rel="noopener">
+          <span class="l-resource-icon" style="background:#FFE9DD;color:#C2410C">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          </span>
+          <h3>Books &amp; Writeups</h3>
+          <p>Community reading lists and long-form content.</p>
+        </a>
+        <a class="l-resource-card" href="/viewer.html">
+          <span class="l-resource-icon" style="background:#FEF3C7;color:#92400E">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+          </span>
+          <h3>Practice Questions</h3>
+          <p>Test yourself against the knowledge-check quizzes.</p>
+        </a>
+      </div>
+
+      <div class="l-learnmore">
+        <div class="l-learnmore-head">
+          <h3 class="l-learnmore-title">Learn More</h3>
+          <p class="l-learnmore-sub">Extra parts of the MOE project beyond the core chapters.</p>
+        </div>
+        <div class="l-resources-grid">
+          <a class="l-resource-card" href="/viewer.html?goto=https%3A%2F%2Fopen-mainframe-project.gitbook.io%2Fmainframe-open-education-project%2Fwelcome-learn-and-contribute-to-moe.md">
+            <span class="l-resource-icon" style="background:#DCEEFF;color:#1E4A9E">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1M3 8h1a4 4 0 1 1 0 8H3M8 12h8"/></svg>
+            </span>
+            <h3>Welcome: Learn &amp; Contribute to MOE</h3>
+            <p>Vision, mission, contribution guide, events, and project governance.</p>
+          </a>
+          <a class="l-resource-card" href="/viewer.html?goto=https%3A%2F%2Fopen-mainframe-project.gitbook.io%2Fmainframe-open-education-project%2Fadditional-mainframe-resources.md">
+            <span class="l-resource-icon" style="background:#FFE9DD;color:#C2410C">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 19-8-8m-6 2-6 6"/><path d="M4 8 8 4m8 8 4-4"/><rect x="12" y="6" width="8" height="8" rx="2"/><rect x="2" y="16" width="8" height="8" rx="2" transform="rotate(90 6 20)"/></svg>
+            </span>
+            <h3>Additional Mainframe Resources</h3>
+            <p>Extra curated reading, references, and links from the community.</p>
+          </a>
+          <a class="l-resource-card" href="/viewer.html?goto=https%3A%2F%2Fopen-mainframe-project.gitbook.io%2Fmainframe-open-education-project%2Fbacklog-on-topics.md">
+            <span class="l-resource-icon" style="background:#FEF3C7;color:#92400E">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
+            </span>
+            <h3>Backlog on Topics</h3>
+            <p>Proposed topics the community wants the curriculum to cover next.</p>
+          </a>
+          <a class="l-resource-card" href="/viewer.html?goto=https%3A%2F%2Fopen-mainframe-project.gitbook.io%2Fmainframe-open-education-project%2Fmainframe-101-blog-series.md">
+            <span class="l-resource-icon" style="background:#F4EFE6;color:#6B5630">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>
+            </span>
+            <h3>Mainframe 101 - Blog Series</h3>
+            <p>Community blog posts breaking down mainframe basics for newcomers.</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 13. FINAL CTA ============ -->
+  <section class="l-final-cta">
+    <div class="l-container l-final-cta-inner">
+      <h2 class="l-final-cta-title">Ready to Start Your Enterprise Journey?</h2>
+      <p class="l-final-cta-sub">Free forever. Open source. Backed by the mainframe community.</p>
+      <div class="l-final-cta-actions">
+        <a class="l-btn l-btn-primary" href="/viewer.html">Start Learning</a>
+        <a class="l-btn l-btn-outline" href="#curriculum">Browse Curriculum</a>
+        <a class="l-btn l-btn-outline" href="https://slack.openmainframeproject.org/" target="_blank" rel="noopener">Join Community</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 14. FOOTER ============ -->
+  <footer class="l-footer">
+    <div class="l-container l-footer-grid">
+
+      <div class="l-footer-brand">
+        <a class="l-logo" href="/">
+          <img src="/logo/moe-logo-black.png" alt="Mainframe Open Education" class="l-logo-img l-logo-img--footer">
+        </a>
+        <p>An open-source learning platform for enterprise computing, by the Open Mainframe Project.</p>
+        <div class="l-footer-social">
+          <a href="https://slack.openmainframeproject.org/" target="_blank" rel="noopener" aria-label="Slack">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1M3 8h1a4 4 0 1 1 0 8H3M8 12h8"/></svg>
+          </a>
+          <a href="https://github.com/open-mainframe-project/mainframe-open-education" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+          </a>
+          <a href="https://instagram.com/MainframeOpenEducation" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <nav class="l-footer-col">
+        <h4>Platform</h4>
+        <a href="/viewer.html">Reader</a>
+        <a href="#journeys">Learning Paths</a>
+        <a href="#curriculum">Curriculum</a>
+        <a href="/certification">Badge</a>
+        <a href="/viewer.html">COBOL Sandbox</a>
+      </nav>
+
+      <nav class="l-footer-col">
+        <h4>Learning</h4>
+        <a href="#journeys">Courses</a>
+        <a href="#journeys">Learning Paths</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#resources">Resources</a>
+      </nav>
+
+      <nav class="l-footer-col">
+        <h4>Community</h4>
+        <a href="#events">Events</a>
+        <a href="https://slack.openmainframeproject.org/" target="_blank" rel="noopener">Slack</a>
+        <a href="https://github.com/open-mainframe-project/mainframe-open-education" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://open-mainframe-project.gitbook.io/mainframe-open-education-project/welcome-learn-and-contribute-to-moe/who-can-contribute/become-a-contributor.md" target="_blank" rel="noopener">Contribute</a>
+      </nav>
+
+      <nav class="l-footer-col">
+        <h4>Resources</h4>
+        <a href="/viewer.html">Documentation</a>
+        <a href="https://open-mainframe-project.gitbook.io/mainframe-open-education-project/mainframe-101-blog-series.md" target="_blank" rel="noopener">Blog</a>
+        <a href="https://open-mainframe-project.gitbook.io/mainframe-open-education-project/welcome-learn-and-contribute-to-moe/events-by-moe.md" target="_blank" rel="noopener">Events</a>
+      </nav>
+
+      <nav class="l-footer-col">
+        <h4>Legal</h4>
+        <a href="https://open-mainframe-project.gitbook.io/mainframe-open-education-project/welcome-learn-and-contribute-to-moe/legal-disclaimer-copyright-and-license.md" target="_blank" rel="noopener">Privacy</a>
+        <a href="https://open-mainframe-project.gitbook.io/mainframe-open-education-project/welcome-learn-and-contribute-to-moe/legal-disclaimer-copyright-and-license.md" target="_blank" rel="noopener">Terms</a>
+        <a href="https://open-mainframe-project.gitbook.io/mainframe-open-education-project/welcome-learn-and-contribute-to-moe/code-of-conduct.md" target="_blank" rel="noopener">Code of Conduct</a>
+      </nav>
+
+    </div>
+
+    <div class="l-container l-footer-bottom">
+      <span>&#169; 2026 Open Mainframe Project. Built with &#10084;&#65039; by the MOE community.</span>
+      <span>Mainframe Open Education</span>
+    </div>
+  </footer>
+
+  <!-- Auth modal (login / register) -->
+  <div id="auth-modal" class="auth-modal" data-moe-tab="login">
+    <div class="auth-modal-box">
+      <button type="button" class="auth-close" aria-label="Close">&times;</button>
+      <div class="auth-tabs">
+        <button type="button" class="auth-tab active" data-auth-tab="login">Log In</button>
+        <button type="button" class="auth-tab" data-auth-tab="register">Sign Up</button>
+      </div>
+      <div class="auth-panel active" data-auth-panel="login">
+        <h3>Welcome back</h3>
+        <p class="auth-sub">Log in to keep your progress synced across devices.</p>
+        <form>
+          <label>Email<input type="email" name="email" autocomplete="email" placeholder="you@example.com" required></label>
+          <label>Password<input type="password" name="password" autocomplete="current-password" placeholder="Your password" required></label>
+          <p class="auth-error"></p>
+          <button type="submit" class="auth-submit">Log In</button>
+        </form>
+      </div>
+      <div class="auth-panel" data-auth-panel="register">
+        <h3>Create your account</h3>
+        <p class="auth-sub">Your quiz progress will follow your account on any device.</p>
+        <form>
+          <label>Email<input type="email" name="email" autocomplete="email" placeholder="you@example.com" required></label>
+          <label>Password<input type="password" name="password" autocomplete="new-password" placeholder="At least 6 characters" required minlength="6"></label>
+          <p class="auth-error"></p>
+          <button type="submit" class="auth-submit">Create Account</button>
+        </form>
+      </div>
+      <p class="auth-note">Not logged in? Your progress is saved on this device only.</p>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script>
+    if (window.MOE_AUTH) {
+      document.addEventListener('moe:auth-ready', () => {
+        MOE_AUTH.renderAccountButton('auth-container');
+      });
+      document.addEventListener('moe:auth-changed', () => {
+        MOE_AUTH.renderAccountButton('auth-container');
+        updateLandingProgress();
+      });
+    }
+
+    /* Curriculum card progress bars (updated from moe_completed_quizzes) */
+    function updateLandingProgress() {
+      const cards = document.querySelectorAll('.l-cur-card');
+      if (!cards.length) return;
+      fetch('/api/sitemap')
+        .then(r => r.json())
+        .then(data => {
+          const sitemap = (data && Array.isArray(data.tree)) ? data.tree : (Array.isArray(data) ? data : []);
+          const findNode = (nodes, url) => {
+            for (const n of nodes) {
+              if (n.url === url) return n;
+              if (n.children) { const f = findNode(n.children, url); if (f) return f; }
+            }
+            return null;
+          };
+          let completed = [];
+          try {
+            const v = JSON.parse(localStorage.getItem('moe_completed_quizzes') || '[]');
+            completed = Array.isArray(v) ? v : [];
+          } catch (e) { /* ignore */ }
+
+          cards.forEach(card => {
+            const href = card.getAttribute('href') || '';
+            const m = href.match(/[?&]goto=([^&]+)/);
+            if (!m) return;
+            const url = decodeURIComponent(m[1]);
+            const node = findNode(sitemap, url);
+            if (!node) return;
+            let total = 0, done = 0;
+            (function walk(n) {
+              if (n.url) { total++; if (completed.includes(n.url)) done++; }
+              (n.children || []).forEach(walk);
+            })(node);
+            const pct = total ? Math.round((done / total) * 100) : 0;
+            const fill = card.querySelector('.l-cur-progress-fill');
+            if (fill) fill.style.width = pct + '%';
+            let label = card.querySelector('.l-cur-pct');
+            if (!label) {
+              label = document.createElement('span');
+              label.className = 'l-cur-pct';
+              const bar = card.querySelector('.l-cur-progress');
+              if (bar) bar.parentNode.insertBefore(label, bar.nextSibling);
+            }
+            label.textContent = pct > 0 ? pct + '% complete' : '0% complete';
+          });
+        })
+        .catch(() => { /* sitemap unavailable — leave bars at 0% */ });
+    }
+    updateLandingProgress();
+    window.addEventListener('pageshow', updateLandingProgress);
+
+    const track = document.getElementById('l-track');
+    const carousel = document.getElementById('l-carousel');
+    document.getElementById('l-next').addEventListener('click', () => {
+      track.scrollBy({ left: carousel.clientWidth * 0.8, behavior: 'smooth' });
+    });
+    document.getElementById('l-prev').addEventListener('click', () => {
+      track.scrollBy({ left: -carousel.clientWidth * 0.8, behavior: 'smooth' });
+    });
+    document.getElementById('l-menu-btn').addEventListener('click', () => {
+      document.getElementById('l-mobile-nav').classList.toggle('open');
+    });
+    const searchInput = document.getElementById('l-search-input');
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        window.location.href = '/viewer.html?q=' + encodeURIComponent(searchInput.value.trim());
+      }
+    });
+  </script>
+</body>
+</html>

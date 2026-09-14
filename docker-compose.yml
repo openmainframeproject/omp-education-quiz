@@ -1,0 +1,43 @@
+services:
+  sandbox:
+    build:
+      context: https://github.com/TusharB-07/Mainframe_Sandbox.git
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:4000/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: moe
+      POSTGRES_USER: moe
+      POSTGRES_PASSWORD: moe_dev_password
+    volumes:
+      - moe-pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U moe -d moe"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: postgres://moe:moe_dev_password@db:5432/moe
+      SESSION_SECRET: dev-only-secret-change-me
+      ADMIN_SECRET: dev-only-admin-change-me
+      SANDBOX_URL: http://sandbox:4000
+    depends_on:
+      db:
+        condition: service_healthy
+      sandbox:
+        condition: service_healthy
+
+volumes:
+  moe-pgdata:
